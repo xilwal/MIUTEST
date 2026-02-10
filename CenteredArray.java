@@ -1,0 +1,35 @@
+public class Main {
+
+    public static void main(String[] args) {
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {3, 2, 1, 4, 5};
+        int[] array3 = {3, 2, 1, 4, 1};
+        int[] array4 = {1, 2, 3, 4};
+        int[] array5 = {};
+        int[] array6 = {10};
+
+        System.out.println("Array 1: " + isCentered(array1)); // Output: 0
+        System.out.println("Array 2: " + isCentered(array2)); // Output: 1
+        System.out.println("Array 3: " + isCentered(array3)); // Output: 0
+        System.out.println("Array 4: " + isCentered(array4)); // Output: 0
+        System.out.println("Array 5: " + isCentered(array5)); // Output: 0
+        System.out.println("Array 6: " + isCentered(array6)); // Output: 1
+    }
+
+    public static int isCentered(int[] arr) {
+        if (arr.length % 2 == 0 || arr.length == 0) {
+            return 0; // No middle element for arrays with even length or empty arrays
+        }
+
+        int middleIndex = arr.length / 2;
+        int middleValue = arr[middleIndex];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (i != middleIndex && arr[i] <= middleValue) {
+                return 0; // Not strictly greater than the middle element
+            }
+        }
+
+        return 1;
+    }
+}
